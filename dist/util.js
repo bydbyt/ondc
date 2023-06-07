@@ -43,7 +43,8 @@ async function executeRequest(opts, context, message, error, body) {
         headers: options.headers
     });
     try {
-        const data = await response.json();
+        let data = await response.json();
+        data.requestBody = baseBody;
         return data;
     }
     catch (ex) {

@@ -268,7 +268,7 @@ export default class ONDC {
             "bap_uri": ctxOpts.bapUri || this.bapUri,
             "bpp_id": ctxOpts.bppId || this.bppId,
             "bpp_uri": ctxOpts.bppUri || this.bppUri,
-            "timestamp": new Date().toISOString(),
+            "timestamp": ctxOpts.timestamp || new Date().toISOString(),
             "key": ctxOpts.key || this.key,
             "ttl": ctxOpts.ttl || this.ttl,
         };

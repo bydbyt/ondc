@@ -20,7 +20,9 @@ async function executeRequest(opts: any, context: any, message?: any, error?: an
         headers: options.headers
     });
     try {
-        const data = await response.json();
+        let data = await response.json();
+        data.requestBody = baseBody; //added this for log purpose only. This is not available in ONDC response.
+
         return data;
     } catch (ex) {
         throw new Error("Invalid json in response body");
