@@ -903,45 +903,47 @@ export interface paths {
 }
 
 export type onSelectMessage = {
-    message?: {
-        order: {
-            provider?: Provider;
-            provider_location?: Location;
-            items?: (Item & {
-                quantity?: ItemQuantity;
-            })[];
-            add_ons?: AddOn[];
-            offers?: Offer[];
-            quote?: Quotation;
-        }
-    }
+    // message?: {
+    //     order: {
+    provider?: Provider;
+    provider_location?: Location;
+    // items?: (Item & {
+    //     quantity?: ItemQuantity;
+    // })[];
+    items?: any;
+    add_ons?: AddOn[];
+    offers?: Offer[];
+    quote?: Quotation;
+    fulfillments?: Fulfillment[];
+    //     }
+    // }
 }
 
 export type onInitMessage = {
-    message?: {
-        order: {
-            provider?: {
-                id?: string;
-            };
-            provider_location?: {
-                id?: string;
-            };
-            items?: {
-                id?: string;
-                quantity?: ItemQuantitySub;
-            }[];
-            add_ons?: {
-                id?: string;
-            }[];
-            offers?: {
-                id?: string;
-            }[];
-            billing?: Billing;
-            fulfillment?: Fulfillment;
-            quote?: Quotation;
-            payment?: Payment;
-        };
+    // message?: {
+    //     order: {
+    provider?: {
+        id?: string;
     };
+    provider_location?: {
+        id?: string;
+    };
+    items?: {
+        id?: string;
+        quantity?: ItemQuantitySub;
+    }[];
+    add_ons?: {
+        id?: string;
+    }[];
+    offers?: {
+        id?: string;
+    }[];
+    billing?: Billing;
+    fulfillment?: Fulfillment;
+    quote?: Quotation;
+    payment?: Payment;
+    //     };
+    // };
 }
 
 export type ONDCOptions = {
@@ -1145,6 +1147,9 @@ export type Time = {
 export type Fulfillment = {
     /** @description Unique reference ID to the fulfillment of an order */
     id?: string;
+    "@ondc/org/provider_name"?: string,
+    "@ondc/org/category"?: string,
+    "@ondc/org/TAT"?: string,
     /** @description This describes the type of fulfillment */
     type?: string;
     provider_id?: string;
@@ -1603,6 +1608,15 @@ export type Quotation = {
     breakup?: {
         title?: string;
         price?: Price;
+        "@ondc/org/item_id"?: string,
+        "@ondc/org/item_quantity"?: {
+            count: string
+        };
+        "@ondc/org/title_type"?: string;
+        item?: {
+            quantity?: ItemQuantity;
+            price?: Price
+        };
     }[];
     ttl?: Duration;
 };

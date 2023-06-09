@@ -27,8 +27,8 @@ export default class ONDC {
     rating(rating: Types.Rating, ctxOpts?: any): Promise<any>;
     support(ref_id?: string, ctxOpts?: any): Promise<any>;
     on_search(catalog: Types.Catalog, ctxOpts?: any, error?: Error): Promise<any>;
-    on_select(message: Types.onSelectMessage, ctxOpts?: any, error?: Error): Promise<any>;
-    on_init(message: Types.onInitMessage, ctxOpts?: any, error?: Error): Promise<any>;
+    on_select(order: Types.onSelectMessage, ctxOpts?: any, error?: Error): Promise<any>;
+    on_init(order: Types.onInitMessage, ctxOpts?: any, error?: Error): Promise<any>;
     on_confirm(order: Types.Order, ctxOpts?: any, error?: Error): Promise<any>;
     on_status(order: Types.Order, ctxOpts?: any, error?: Error): Promise<any>;
     on_track(tracking: Types.Tracking, ctxOpts?: any, error?: Error): Promise<any>;

@@ -117,14 +117,28 @@ class ONDC {
         });
         return (await util_1.default.executeRequest(options, context, message, error));
     }
-    async on_select(message, ctxOpts, error) {
+    async on_select(order, ctxOpts, error) {
         const options = this.getOptions('on_select');
         const context = this.getContext("on_select", ctxOpts);
+        const message = {
+            order: order
+        };
+        options.headers.Authorization = await this.createAuthorizationHeader({
+            context: context,
+            message: message,
+        });
         return (await util_1.default.executeRequest(options, context, message, error));
     }
-    async on_init(message, ctxOpts, error) {
+    async on_init(order, ctxOpts, error) {
         const options = this.getOptions('on_init');
         const context = this.getContext("on_init", ctxOpts);
+        const message = {
+            order: order
+        };
+        options.headers.Authorization = await this.createAuthorizationHeader({
+            context: context,
+            message: message,
+        });
         return (await util_1.default.executeRequest(options, context, message, error));
     }
     async on_confirm(order, ctxOpts, error) {
@@ -133,13 +147,17 @@ class ONDC {
         const message = {
             order: order
         };
+        options.headers.Authorization = await this.createAuthorizationHeader({
+            context: context,
+            message: message,
+        });
         return (await util_1.default.executeRequest(options, context, message, error));
     }
     async on_status(order, ctxOpts, error) {
         const options = this.getOptions('on_status');
         const context = this.getContext("on_status", ctxOpts);
         const message = {
-            order,
+            order: order,
         };
         return (await util_1.default.executeRequest(options, context, message, error));
     }

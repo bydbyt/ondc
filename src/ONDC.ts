@@ -138,19 +138,33 @@ export default class ONDC {
         options.headers.Authorization = await this.createAuthorizationHeader({
             context: context,
             message: message,
-          });
+        });
         return (await Util.executeRequest(options, context, message, error));
     }
 
-    async on_select(message: Types.onSelectMessage, ctxOpts?: any, error?: Error): Promise<any> {
+    async on_select(order: Types.onSelectMessage, ctxOpts?: any, error?: Error): Promise<any> {
         const options: any = this.getOptions('on_select');
         const context: Types.Context = this.getContext("on_select", ctxOpts);
+        const message = {
+            order: order
+        }
+        options.headers.Authorization = await this.createAuthorizationHeader({
+            context: context,
+            message: message,
+        });
         return (await Util.executeRequest(options, context, message, error));
     }
 
-    async on_init(message: Types.onInitMessage, ctxOpts?: any, error?: Error): Promise<any> {
+    async on_init(order: Types.onInitMessage, ctxOpts?: any, error?: Error): Promise<any> {
         const options: any = this.getOptions('on_init');
         const context: Types.Context = this.getContext("on_init", ctxOpts);
+        const message = {
+            order: order
+        }
+        options.headers.Authorization = await this.createAuthorizationHeader({
+            context: context,
+            message: message,
+        });
         return (await Util.executeRequest(options, context, message, error));
     }
 
@@ -160,6 +174,10 @@ export default class ONDC {
         const message = {
             order: order
         }
+        options.headers.Authorization = await this.createAuthorizationHeader({
+            context: context,
+            message: message,
+        });
         return (await Util.executeRequest(options, context, message, error));
     }
 
@@ -167,7 +185,7 @@ export default class ONDC {
         const options: any = this.getOptions('on_status');
         const context: Types.Context = this.getContext("on_status", ctxOpts);
         const message = {
-            order,
+            order: order,
         }
         return (await Util.executeRequest(options, context, message, error));
     }
@@ -294,7 +312,7 @@ export default class ONDC {
         return header;
     }
 
-    async verifyHeader (header: string, subscriber_details: Types.SubscriberDetail, body: any): Promise<boolean> {
+    async verifyHeader(header: string, subscriber_details: Types.SubscriberDetail, body: any): Promise<boolean> {
         try {
             const parts = Util.split_auth_header(header);
             if (!parts || Object.keys(parts).length === 0) {
