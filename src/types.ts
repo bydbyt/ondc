@@ -922,24 +922,17 @@ export type onSelectMessage = {
 export type onInitMessage = {
     // message?: {
     //     order: {
-    provider?: {
-        id?: string;
-    };
-    provider_location?: {
-        id?: string;
-    };
-    items?: {
-        id?: string;
-        quantity?: ItemQuantitySub;
-    }[];
-    add_ons?: {
-        id?: string;
-    }[];
-    offers?: {
-        id?: string;
-    }[];
+    provider?: Provider;
+    provider_location?: Location;
+    // items?: {
+    //     id?: string;
+    //     quantity?: ItemQuantitySub;
+    // }[];
+    items?: any;
+    add_ons?: AddOn[];
+    offers?: Offer[];
     billing?: Billing;
-    fulfillment?: Fulfillment;
+    fulfillment?: Fulfillment[];
     quote?: Quotation;
     payment?: Payment;
     //     };
