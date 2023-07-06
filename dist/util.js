@@ -29,12 +29,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const libsodium_wrappers_1 = __importStar(require("libsodium-wrappers"));
 async function executeRequest(opts, context, message, error, body) {
-    const baseBody = body || {
+    let baseBody = body || {
         "context": context,
         "message": message,
     };
     if (error) {
-        body["error"] = error;
+        baseBody["error"] = error;
     }
     var options = Object.assign(Object.assign({}, opts), { body: JSON.stringify(baseBody) });
     const response = await (0, node_fetch_1.default)(options.url, {

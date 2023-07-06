@@ -123,10 +123,14 @@ class ONDC {
         const message = {
             order: order
         };
-        options.headers.Authorization = await this.createAuthorizationHeader({
+        let authHeaders = {
             context: context,
             message: message,
-        });
+        };
+        if (error) {
+            authHeaders.error = error;
+        }
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
         return (await util_1.default.executeRequest(options, context, message, error));
     }
     async on_init(order, ctxOpts, error) {
@@ -135,10 +139,14 @@ class ONDC {
         const message = {
             order: order
         };
-        options.headers.Authorization = await this.createAuthorizationHeader({
+        let authHeaders = {
             context: context,
             message: message,
-        });
+        };
+        if (error) {
+            authHeaders.error = error;
+        }
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
         return (await util_1.default.executeRequest(options, context, message, error));
     }
     async on_confirm(order, ctxOpts, error) {
@@ -147,10 +155,14 @@ class ONDC {
         const message = {
             order: order
         };
-        options.headers.Authorization = await this.createAuthorizationHeader({
+        let authHeaders = {
             context: context,
             message: message,
-        });
+        };
+        if (error) {
+            authHeaders.error = error;
+        }
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
         return (await util_1.default.executeRequest(options, context, message, error));
     }
     async on_status(order, ctxOpts, error) {
@@ -159,6 +171,14 @@ class ONDC {
         const message = {
             order: order,
         };
+        let authHeaders = {
+            context: context,
+            message: message,
+        };
+        if (error) {
+            authHeaders.error = error;
+        }
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
         return (await util_1.default.executeRequest(options, context, message, error));
     }
     async on_track(tracking, ctxOpts, error) {
@@ -167,6 +187,14 @@ class ONDC {
         const message = {
             tracking,
         };
+        let authHeaders = {
+            context: context,
+            message: message,
+        };
+        if (error) {
+            authHeaders.error = error;
+        }
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
         return (await util_1.default.executeRequest(options, context, message, error));
     }
     async on_cancel(order, ctxOpts, error) {
@@ -175,6 +203,14 @@ class ONDC {
         const message = {
             order,
         };
+        let authHeaders = {
+            context: context,
+            message: message,
+        };
+        if (error) {
+            authHeaders.error = error;
+        }
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
         return (await util_1.default.executeRequest(options, context, message, error));
     }
     async on_update(order, ctxOpts, error) {
@@ -183,6 +219,14 @@ class ONDC {
         const message = {
             order,
         };
+        let authHeaders = {
+            context: context,
+            message: message,
+        };
+        if (error) {
+            authHeaders.error = error;
+        }
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
         return (await util_1.default.executeRequest(options, context, message, error));
     }
     async on_rating(rankingAck, ctxOpts, error) {

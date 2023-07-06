@@ -2,17 +2,16 @@ import fetch from 'node-fetch';
 import _sodium, { base64_variants } from "libsodium-wrappers";
 
 async function executeRequest(opts: any, context: any, message?: any, error?: any, body?: any): Promise<any> {
-    const baseBody: any = body || {
+    let baseBody: any = body || {
         "context": context,
         "message": message,
     };
     if (error) {
-        body["error"] = error;
+        baseBody["error"] = error;
     }
     var options: any = {
         ...opts,
         body: JSON.stringify(baseBody)
-
     };
     const response = await fetch(options.url, {
         method: options.method,
