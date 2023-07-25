@@ -279,6 +279,14 @@ export default class ONDC {
             email,
             uri,
         };
+        let authHeaders: any = {
+            context: context,
+            message: message,
+        };
+        if (error) {
+            authHeaders.error = error;
+        }
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
         return (await Util.executeRequest(options, context, message, error));
     }
 

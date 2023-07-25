@@ -245,6 +245,14 @@ class ONDC {
             email,
             uri,
         };
+        let authHeaders = {
+            context: context,
+            message: message,
+        };
+        if (error) {
+            authHeaders.error = error;
+        }
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
         return (await util_1.default.executeRequest(options, context, message, error));
     }
     async get_cancellation_reasons(ctxOpts) {
