@@ -21,6 +21,7 @@ async function executeRequest(opts: any, context: any, message?: any, error?: an
     try {
         let data = await response.json();
         data.requestBody = baseBody; //added this for log purpose only. This is not available in ONDC response.
+        data.requestHeaders = options.headers; //added this for log purpose only. This is not available in ONDC response.
 
         return data;
     } catch (ex) {
