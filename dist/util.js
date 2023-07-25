@@ -45,6 +45,7 @@ async function executeRequest(opts, context, message, error, body) {
     try {
         let data = await response.json();
         data.requestBody = baseBody;
+        data.requestHeaders = options.headers;
         return data;
     }
     catch (ex) {
