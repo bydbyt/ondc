@@ -266,6 +266,11 @@ class ONDC {
         const message = {
             cancellation_reasons: reasons
         };
+        let authHeaders = {
+            context: context,
+            message: message,
+        };
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
         return (await util_1.default.executeRequest(options, context, message));
     }
     async get_return_reasons(ctxOpts) {
@@ -276,6 +281,11 @@ class ONDC {
     async return_reasons(return_reasons, ctxOpts) {
         const options = this.getOptions('return_reasons');
         const context = this.getContext("return_reasons", ctxOpts);
+        let authHeaders = {
+            context: context,
+            return_reasons,
+        };
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
         return (await util_1.default.executeRequest(options, context, undefined, undefined, {
             context,
             return_reasons,
@@ -285,6 +295,56 @@ class ONDC {
         const options = this.getOptions('get_rating_categories');
         const context = this.getContext("get_rating_categories", ctxOpts);
         return (await util_1.default.executeRequest(options, context));
+    }
+    async rating_categories(rating_categories, ctxOpts) {
+        const options = this.getOptions('rating_categories');
+        const context = this.getContext("rating_categories", ctxOpts);
+        let authHeaders = {
+            context: context,
+            rating_categories,
+        };
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
+        return (await util_1.default.executeRequest(options, context, undefined, undefined, {
+            context,
+            rating_categories,
+        }));
+    }
+    async get_feedback_categories(ctxOpts) {
+        const options = this.getOptions('get_feedback_categories');
+        const context = this.getContext("get_feedback_categories", ctxOpts);
+        return (await util_1.default.executeRequest(options, context));
+    }
+    async feedback_categories(feedback_categories, ctxOpts) {
+        const options = this.getOptions('feedback_categories');
+        const context = this.getContext("feedback_categories", ctxOpts);
+        let authHeaders = {
+            context: context,
+            feedback_categories,
+        };
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
+        return (await util_1.default.executeRequest(options, context, undefined, undefined, {
+            context,
+            feedback_categories,
+        }));
+    }
+    async get_feedback_form(ctxOpts) {
+        const options = this.getOptions('get_feedback_form');
+        const context = this.getContext("get_feedback_form", ctxOpts);
+        return (await util_1.default.executeRequest(options, context));
+    }
+    async feedback_form(feedback_form, feedback_url, ctxOpts, error) {
+        const options = this.getOptions('feedback_form');
+        const context = this.getContext("feedback_form", ctxOpts);
+        const message = {
+            feedback_form,
+            feedback_url
+        };
+        let authHeaders = {
+            context: context,
+            message: message,
+        };
+        options.headers.Authorization = await this.createAuthorizationHeader(authHeaders);
+        return (await util_1.default.executeRequest(options, context, message, error));
     }
     getContext(action, ctxOpts = {}) {
         return {

@@ -41,6 +41,11 @@ export default class ONDC {
     get_return_reasons(ctxOpts?: any): Promise<any>;
     return_reasons(return_reasons?: Types.Option[], ctxOpts?: any): Promise<any>;
     get_rating_categories(ctxOpts?: any): Promise<any>;
+    rating_categories(rating_categories?: Types.Option[], ctxOpts?: any): Promise<any>;
+    get_feedback_categories(ctxOpts?: any): Promise<any>;
+    feedback_categories(feedback_categories?: Types.Option[], ctxOpts?: any): Promise<any>;
+    get_feedback_form(ctxOpts?: any): Promise<any>;
+    feedback_form(feedback_form?: any, feedback_url?: any, ctxOpts?: any, error?: Error): Promise<any>;
     getContext(action: string, ctxOpts?: any): Types.Context;
     getOptions(path: string): any;
     createAuthorizationHeader(message: any): Promise<string>;
